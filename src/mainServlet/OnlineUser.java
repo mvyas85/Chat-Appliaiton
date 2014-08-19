@@ -20,7 +20,7 @@ import db.ChatDbOperations;
 import exceptions.ChatDbFailure;
 
 @WebServlet("/OnlineUser")
-public class OnlineUser extends HttpServlet implements Observer {
+public class OnlineUser extends HttpServlet  {
 	//private static final long serialVersionUID = 1L;
     
 	private static final long serialVersionUID = -1066736333925199622L;
@@ -57,9 +57,5 @@ public class OnlineUser extends HttpServlet implements Observer {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Inside doget method of timeservlet");
 		
-	}
-	@Override
-	public void update(Observable o, Object arg) {
-		System.out.println("Trying to update values");
 	}
 }

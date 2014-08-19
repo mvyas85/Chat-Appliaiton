@@ -15,6 +15,7 @@ import javax.json.Json;
 import javax.json.JsonBuilderFactory;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
+import javax.json.JsonReader;
 import javax.json.JsonValue;
 import javax.json.JsonWriter;
 import javax.json.stream.JsonParser;
@@ -115,6 +116,10 @@ public class SendMessage
   	
   	private Map<String,String> parseJsonMsg(String message){
 	  	
+  		JsonReader reader = Json.createReader(new StringReader(message));
+  		JsonObject bookListObj = reader.readObject();
+  		
+  		System.out.println("Reading "+bookListObj);
   		JsonParserFactory factory = Json.createParserFactory(null);
 	  	JsonParser parser = factory.createParser(new StringReader(message));
 	  	Map<String, String> map = new HashMap<String, String>();
