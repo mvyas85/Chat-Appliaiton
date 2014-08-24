@@ -1,4 +1,4 @@
-package mainServlet;
+package mainServletController;
 
 import java.util.List;
 import java.util.Observable;

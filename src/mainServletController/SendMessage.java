@@ -1,4 +1,4 @@
-package mainServlet;
+package mainServletController;
 
 import java.io.IOException;
 import java.io.StringReader;

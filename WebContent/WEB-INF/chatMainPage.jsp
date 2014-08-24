@@ -137,7 +137,8 @@
 	<a href="${pageContext.request.contextPath}/logoutprocess" style="font-size:25px;float:right">Logout</a>
 	
 	<div id="center">
-	<h2>Welcome ${sessionScope['loginUser'].name}</h2>
+	<h2>Welcome ${sessionScope['loginUser'].name} </h2><br/> login time is 
+	<%= new java.util.Date() %>
 	
 		<h2>Click on user to start chat</h2>
 		

@@ -4,12 +4,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Create User Success</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	
 	<body>
-		    <h1>Logout User Success !${sessionScope['loginUser'].name} </h1>
-		    
-			<a href="../login.jsp">Go to Login page</a>
+		    <h1>Create User Success !</h1>
+			<a href="${pageContext.request.contextPath}/login.jsp">Go to Login page</a>
 	</body>
 </html>

@@ -1,8 +1,10 @@
-package mainServlet;
+package mainServletController;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletConfig;
 import javax.servlet.annotation.WebServlet;
@@ -30,12 +32,14 @@ public class LogoutProcessServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Do get for Login");
+		ServletContext context = request.getServletContext();
+		
 		String pageCtx;
 		pageCtx = request.getContextPath();
 		HttpSession session = request.getSession(false);
 		
 		User logoutuser =  (User) session.getAttribute("loginUser");
-		
+		RequestDispatcher dispatch =null;
 		try {
 			ChatDbOperations.logOutUser(logoutuser.getId());
 		} catch (SQLException | ChatDbFailure e) {
@@ -44,7 +48,9 @@ public class LogoutProcessServlet extends HttpServlet {
 		System.out.println("LOGGING OUT ::getName "+logoutuser.getName());
         session.invalidate();
 		
-		response.sendRedirect(pageCtx + "/jsp/logoutUserSucess.jsp");
+		//response.sendRedirect(pageCtx + "/logoutUserSucess.jsp");
+		dispatch = context.getRequestDispatcher("/WEB-INF/logoutUserSucess.jsp");
+		dispatch.forward(request, response);
 	}
 
 }

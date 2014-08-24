@@ -1,4 +1,4 @@
-package mainServlet;
+package mainServletController;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import services.UserService;
 import model.User;
 
-@WebServlet("/jsp/createUserProcess")
+@WebServlet("/createUserProcess")
 public class CreateUserProcessServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -45,7 +45,7 @@ public class CreateUserProcessServlet extends HttpServlet {
 				request.setAttribute("errorInNameMsg", "Name can not be null !");}
 			if(user.getPass() == null){
 				request.setAttribute("errorInPassMsg", "Password can't be null !");}
-			dispatch = context.getRequestDispatcher("/jsp/createUser.jsp");
+			dispatch = context.getRequestDispatcher("/WEB-INF/createUser.jsp");
 			dispatch.forward(request, response);
 			return;
 		} 
@@ -54,7 +54,7 @@ public class CreateUserProcessServlet extends HttpServlet {
 		UserService.createUser(user);
 		System.out.println("User Created Sccuess");
 		
-		dispatch = context.getRequestDispatcher("/jsp/createUserSucess.jsp");
+		dispatch = context.getRequestDispatcher("/WEB-INF/createUserSucess.jsp");
 		dispatch.forward(request, response);
 		
 	}
